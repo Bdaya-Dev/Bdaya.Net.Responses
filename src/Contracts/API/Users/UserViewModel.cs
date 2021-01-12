@@ -2,9 +2,9 @@
 
 namespace Bdaya.Net.Responses.Contracts.API.Users
 {
-    public class UserViewModel
+    public class UserViewModel<TId>
     {
-        public Guid Id { get; set; }
+        public TId Id { get; set; }
         public string UserName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

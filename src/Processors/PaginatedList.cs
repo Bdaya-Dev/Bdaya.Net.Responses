@@ -50,5 +50,19 @@ namespace Bdaya.Net.Responses.Processors
                 LastPageIndex = count
             };
         }
+        public static async Task<PaginatedResponse<T>> CreateMappedAsync<TSrc>(IQueryable<TSrc> source, int pageIndex, int pageSize, Func<TSrc, T> mapper)
+        {
+
+            var count = await source.CountAsync();
+            var items = await source.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
+
+            return new PaginatedResponse<T>
+            {
+                Page = new PaginatedList<T>(items.Select(mapper).ToList(), count, pageIndex, pageSize),
+                PageSize = pageSize,
+                PageIndex = pageIndex,
+                LastPageIndex = count
+            };
+        }
     }
 }

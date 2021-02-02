@@ -9,7 +9,7 @@ namespace Bdaya.Net.Responses.Contracts.API
     public class GenericResponseViewModel<T> : ResponseViewModel
     {
         public T Data { get; set; }
-        public GenericResponseViewModel(T data, bool isSuccess = true, string message = "Success")
+        public GenericResponseViewModel(T data, bool isSuccess = true, string message = "Success Execution")
         {
             Data = data;
             Status = isSuccess;

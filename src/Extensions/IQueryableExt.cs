@@ -7,7 +7,7 @@ namespace System.Linq
 {
     public static class IQueryableExt
     {
-        public static async Task<PaginatedResponse<TTarget>> GetPaginatedResponseAsync<TSrc, TTarget>(this IOrderedQueryable<TSrc> srcQuery, int pageIndex, int pageSize, Func<Task<int>> countFunc, Expression<Func<TSrc, TTarget>> mapper)
+        public static async Task<PaginatedList<TTarget>> GetPaginatedResponseAsync<TSrc, TTarget>(this IOrderedQueryable<TSrc> srcQuery, int pageIndex, int pageSize, Func<Task<int>> countFunc, Expression<Func<TSrc, TTarget>> mapper)
         {
             var paginated = srcQuery.Paginate(
                 pageIndex: pageIndex,
